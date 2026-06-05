@@ -41,8 +41,8 @@ class AutoDoubleSpinBox : public QDoubleSpinBox, public AutoWidget
     void setBindModel(std::function<QAbstractItemModel*()> fn) = delete;
     void setBindText(std::function<QString()> fn) = delete;
 
-    void setField(int & field, GenericPanel * panel = nullptr);
-    void setField(unsigned int & field, GenericPanel * panel = nullptr);
+    void setField(int & field, AbstractPanel * panel = nullptr);
+    void setField(unsigned int & field, AbstractPanel * panel = nullptr);
     void setDecimals(int prec);
     void setOffset(int offset);
 

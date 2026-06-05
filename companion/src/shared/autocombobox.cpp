@@ -87,70 +87,70 @@ void AutoComboBox::setAutoModel(QAbstractItemModel * model)
   AutoComboBox::setModel(model);
 }
 
-void AutoComboBox::setField(unsigned int & field, GenericPanel * panel)
+void AutoComboBox::setField(unsigned int & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_field = (int *)&field;
   updateValue();
 }
 
-void AutoComboBox::setField(int & field, GenericPanel * panel)
+void AutoComboBox::setField(int & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_field = &field;
   updateValue();
 }
 
-void AutoComboBox::setField(RawSource & field, GenericPanel * panel)
+void AutoComboBox::setField(RawSource & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_rawSource = &field;
   updateValue();
 }
 
-void AutoComboBox::setField(RawSwitch & field, GenericPanel * panel)
+void AutoComboBox::setField(RawSwitch & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_rawSwitch = &field;
   updateValue();
 }
 
-void AutoComboBox::setField(CurveData::CurveType & field, GenericPanel * panel)
+void AutoComboBox::setField(CurveData::CurveType & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_curveType = &field;
   updateValue();
 }
 
-void AutoComboBox::setField(Board::FlexType & field, GenericPanel * panel)
+void AutoComboBox::setField(Board::FlexType & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_flexType = &field;
   updateValue();
 }
 
-void AutoComboBox::setField(Board::SwitchType & field, GenericPanel * panel)
+void AutoComboBox::setField(Board::SwitchType & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_switchType = &field;
   updateValue();
 }
 
-void AutoComboBox::setField(QString & field, GenericPanel * panel)
+void AutoComboBox::setField(QString & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_qString = &field;
   updateValue();
 }
 
-void AutoComboBox::setField(std::string & field, GenericPanel * panel)
+void AutoComboBox::setField(std::string & field, AbstractPanel * panel)
 {
   setFieldInit(panel);
   m_stdString = &field;
   updateValue();
 }
 
-void AutoComboBox::setFieldInit(GenericPanel * panel)
+void AutoComboBox::setFieldInit(AbstractPanel * panel)
 {
   initField();
   setPanel(panel);

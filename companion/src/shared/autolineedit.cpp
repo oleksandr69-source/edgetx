@@ -37,19 +37,19 @@ AutoLineEdit::~AutoLineEdit()
 {
 }
 
-void AutoLineEdit::setField(char * field, int len, GenericPanel * panel)
+void AutoLineEdit::setField(char * field, int len, AbstractPanel * panel)
 {
   m_charField = field;
   setFieldInit(len, panel);
 }
 
-void AutoLineEdit::setField(QString & field, int len, GenericPanel * panel)
+void AutoLineEdit::setField(QString & field, int len, AbstractPanel * panel)
 {
   m_strField = &field;
   setFieldInit(len, panel);
 }
 
-void AutoLineEdit::setFieldInit(int len, GenericPanel * panel)
+void AutoLineEdit::setFieldInit(int len, AbstractPanel * panel)
 {
   setPanel(panel);
   if (len)

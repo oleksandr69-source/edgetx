@@ -21,12 +21,14 @@
 
 #include "autocheckbox.h"
 
-AutoCheckBox::AutoCheckBox(QWidget * parent):
+AutoCheckBox::AutoCheckBox(QWidget * parent, const QString & text):
   QCheckBox(parent),
   AutoWidget(),
   m_field(nullptr),
-  m_invert(false)
+  m_invert(false),
+  m_value(false)
 {
+  QCheckBox::setText(text);
   connect(this, &QCheckBox::toggled, this, &AutoCheckBox::onToggled);
 }
 
@@ -36,15 +38,21 @@ AutoCheckBox::~AutoCheckBox()
 
 void AutoCheckBox::onToggled(bool checked)
 {
-  if (m_field && !lock()) {
+  if (!lock()) {
     const bool val = m_invert ? !checked : checked;
-    *m_field = val;
+
+    if (m_field) {
+      *m_field = val;
+    } else {
+      m_value = val;
+    }
+
     emit currentDataChanged(val);
     runPostChanged();
   }
 }
 
-void AutoCheckBox::setField(bool & field, GenericPanel * panel, bool invert)
+void AutoCheckBox::setField(bool & field, AbstractPanel * panel, bool invert)
 {
   m_field = &field;
   m_invert = invert;
@@ -63,11 +71,22 @@ void AutoCheckBox::setAutoText(QString text)
   QCheckBox::setText(text);
 }
 
+void AutoCheckBox::setValue(bool value)
+{
+  if (!m_field) {
+    m_value = value;
+    updateValue();
+  }
+}
+
 void AutoCheckBox::updateValue()
 {
-  if (m_field) {
-    setLock(true);
+  setLock(true);
+
+  if (m_field)
     setChecked(m_invert ? !(*m_field) : *m_field);
-    setLock(false);
-  }
+  else
+    setChecked(m_invert ? !m_value : m_value);
+
+  setLock(false);
 }

@@ -34,14 +34,14 @@ AutoDoubleSpinBox::~AutoDoubleSpinBox()
 {
 }
 
-void AutoDoubleSpinBox::setField(int & field, GenericPanel * panel)
+void AutoDoubleSpinBox::setField(int & field, AbstractPanel * panel)
 {
   m_field = &field;
   setPanel(panel);
   updateValue();
 }
 
-void AutoDoubleSpinBox::setField(unsigned int & field, GenericPanel * panel)
+void AutoDoubleSpinBox::setField(unsigned int & field, AbstractPanel * panel)
 {
   m_field = (int *)&field;
   setPanel(panel);
