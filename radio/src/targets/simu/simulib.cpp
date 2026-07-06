@@ -720,7 +720,8 @@ void simuLuaReloadPermanentScripts()
 
 void simuLcdFlushed()
 {
-  lcdFlushed();
+  if (simu_running)
+    lcdFlushed();
 }
 
 uint8_t simuGetMaxTrainerChannels()
